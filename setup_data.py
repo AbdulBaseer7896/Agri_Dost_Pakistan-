@@ -13,9 +13,9 @@ from api.models import Category, Product, SiteSettings, Testimonial, HeroBanner
 
 
 def create_admin():
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@agridost.pk', 'admin123')
-        print('✓ Admin user created (username: admin / password: admin123)')
+    if not User.objects.filter(username='saeedadmin').exists():
+        User.objects.create_superuser('saeedadmin', 'saeedadmin@gmail.com', 'saeed@786')
+        print('✓ Admin user created (username: saeedadmin / password: saeed@786)')
     else:
         print('• Admin already exists')
 

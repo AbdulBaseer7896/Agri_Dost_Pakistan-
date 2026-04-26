@@ -144,12 +144,21 @@ class Testimonial(models.Model):
 
 
 class HeroBanner(models.Model):
-    """Hero banner images for the landing page"""
+    """Hero banner for the landing page - supports image OR video"""
+    BANNER_TYPE_CHOICES = [
+        ('image', 'Image'),
+        ('video', 'Video'),
+    ]
     title_en = models.CharField(max_length=200, blank=True)
     title_ur = models.CharField(max_length=200, blank=True)
     subtitle_en = models.CharField(max_length=300, blank=True)
     subtitle_ur = models.CharField(max_length=300, blank=True)
-    image = models.ImageField(upload_to='banners/')
+    banner_type = models.CharField(max_length=10, choices=BANNER_TYPE_CHOICES, default='image')
+    image = models.ImageField(upload_to='banners/', blank=True, null=True)
+    video = models.FileField(upload_to='banners/videos/', blank=True, null=True)
+    button_text_en = models.CharField(max_length=50, blank=True, default='')
+    button_text_ur = models.CharField(max_length=50, blank=True, default='')
+    button_link = models.CharField(max_length=200, blank=True, default='', help_text="e.g., /products or /products/5")
     order = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

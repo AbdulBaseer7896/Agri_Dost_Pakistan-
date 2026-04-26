@@ -132,7 +132,9 @@ class HeroBannerSerializer(serializers.ModelSerializer):
         model = HeroBanner
         fields = [
             'id', 'title_en', 'title_ur', 'subtitle_en', 'subtitle_ur',
-            'image', 'order', 'is_active', 'created_at'
+            'banner_type', 'image', 'video',
+            'button_text_en', 'button_text_ur', 'button_link',
+            'order', 'is_active', 'created_at'
         ]
 
 
