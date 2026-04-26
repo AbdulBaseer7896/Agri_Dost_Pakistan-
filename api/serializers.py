@@ -118,12 +118,19 @@ class OrderUpdateSerializer(serializers.ModelSerializer):
 
 
 class TestimonialSerializer(serializers.ModelSerializer):
+    product_name_en = serializers.CharField(source='product.name_en', read_only=True)
+    product_name_ur = serializers.CharField(source='product.name_ur', read_only=True)
+
     class Meta:
         model = Testimonial
         fields = [
-            'id', 'customer_name', 'location', 'title_en', 'title_ur',
-            'description_en', 'description_ur', 'video', 'thumbnail',
-            'rating', 'order', 'is_active', 'created_at'
+            'id', 'customer_name', 'customer_photo', 'location',
+            'product', 'product_name_en', 'product_name_ur',
+            'title_en', 'title_ur',
+            'description_en', 'description_ur',
+            'video', 'thumbnail', 'rating',
+            'show_on_home', 'show_on_about',
+            'order', 'is_active', 'created_at'
         ]
 
 

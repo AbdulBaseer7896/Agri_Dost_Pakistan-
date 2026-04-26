@@ -122,9 +122,11 @@ class Order(models.Model):
 
 
 class Testimonial(models.Model):
-    """Customer testimonial videos for landing page"""
+    """Customer feedback/testimonial - photo, video, and review"""
     customer_name = models.CharField(max_length=200)
+    customer_photo = models.ImageField(upload_to='testimonials/photos/', blank=True, null=True, help_text="Photo of the customer (separate from video thumbnail)")
     location = models.CharField(max_length=200, blank=True)
+    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True, related_name='testimonials', help_text="Optional: link this feedback to a specific product")
     title_en = models.CharField(max_length=200, blank=True)
     title_ur = models.CharField(max_length=200, blank=True)
     description_en = models.TextField(blank=True)
@@ -132,6 +134,8 @@ class Testimonial(models.Model):
     video = models.FileField(upload_to='testimonials/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='testimonials/thumbnails/', blank=True, null=True)
     rating = models.IntegerField(default=5, help_text="1 to 5")
+    show_on_home = models.BooleanField(default=True, help_text="Display on the homepage")
+    show_on_about = models.BooleanField(default=True, help_text="Display on the about page")
     order = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

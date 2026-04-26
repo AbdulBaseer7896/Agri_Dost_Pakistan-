@@ -205,9 +205,15 @@ class TestimonialViewSet(viewsets.ModelViewSet):
         return [IsAdminUser()]
 
     def get_queryset(self):
-        qs = Testimonial.objects.all()
+        qs = Testimonial.objects.all().select_related('product')
         if self.request.user.is_anonymous or not self.request.user.is_staff:
             qs = qs.filter(is_active=True)
+        # Filter by display location
+        on = self.request.query_params.get('on')
+        if on == 'home':
+            qs = qs.filter(show_on_home=True)
+        elif on == 'about':
+            qs = qs.filter(show_on_about=True)
         return qs
 
 

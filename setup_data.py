@@ -13,9 +13,9 @@ from api.models import Category, Product, SiteSettings, Testimonial, HeroBanner
 
 
 def create_admin():
-    if not User.objects.filter(username='saeedadmin').exists():
-        User.objects.create_superuser('saeedadmin', 'saeedadmin@gmail.com', 'saeed@786')
-        print('✓ Admin user created (username: saeedadmin / password: saeed@786)')
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@agridost.pk', 'admin123')
+        print('✓ Admin user created (username: admin / password: admin123)')
     else:
         print('• Admin already exists')
 
@@ -159,6 +159,7 @@ def create_testimonials():
             'description_en': 'I bought wheat seeds from Agri Dost last year and got 65 maunds per acre. Quality is excellent and delivery was fast.',
             'description_ur': 'پچھلے سال میں نے زرعی دوست سے گندم کے بیج خریدے اور فی ایکڑ 65 من پیداوار حاصل کی۔ معیار بہترین ہے۔',
             'rating': 5, 'order': 1,
+            'show_on_home': True, 'show_on_about': True,
         },
         {
             'customer_name': 'Allah Ditta',
@@ -168,6 +169,7 @@ def create_testimonials():
             'description_en': 'Original DAP and urea at fair prices. Never had any complaints in 2 years.',
             'description_ur': 'اصلی ڈی اے پی اور یوریا مناسب قیمت پر۔ 2 سال میں کبھی شکایت نہیں ہوئی۔',
             'rating': 5, 'order': 2,
+            'show_on_home': True, 'show_on_about': True,
         },
         {
             'customer_name': 'Ghulam Mustafa',
@@ -177,6 +179,7 @@ def create_testimonials():
             'description_en': 'They helped me choose the right seeds for my soil. Great experience!',
             'description_ur': 'انہوں نے میری زمین کے لیے صحیح بیج چننے میں میری مدد کی۔',
             'rating': 5, 'order': 3,
+            'show_on_home': True, 'show_on_about': True,
         },
     ]
     for it in items:
