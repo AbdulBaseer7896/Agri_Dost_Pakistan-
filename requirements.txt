@@ -10,3 +10,4 @@ gunicorn
 whitenoise
 cloudinary
 django-cloudinary-storage
+uvicorn
